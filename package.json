@@ -1,0 +1,41 @@
+{
+  "name": "mean-type-base",
+  "version": "1.0.0",
+  "description": "base directory for future projects",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon ./bin/www",
+    "grunt": "grunt",
+    "start": "node ./bin/www"
+  },
+  "author": "Rezwan Khan",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.16.0",
+    "errorhandler": "^1.5.0",
+    "express": "^4.14.1",
+    "mongodb": "^2.2.22",
+    "mongoose": "^4.8.1",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt-nodejs": "0.0.30",
+    "@types/body-parser": "0.0.33",
+    "@types/errorhandler": "0.0.30",
+    "@types/mongodb": "^2.1.37",
+    "@types/mongoose": "^4.7.3",
+    "@types/morgan": "^1.7.32",
+    "@types/passport": "^0.3.2",
+    "@types/passport-http": "^0.3.2",
+    "@types/passport-local": "^1.0.29",
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-ts": "^6.0.0-beta.11",
+    "typescript": "^2.1.5"
+  }
+}
