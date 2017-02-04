@@ -85,3 +85,7 @@ mongod
 .tscache/
 dist/
 .baseDir.ts
+
+# Visual Studio Code
+# =========
+.vscode/

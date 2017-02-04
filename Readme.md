@@ -3,3 +3,6 @@ following:
 https://devcenter.heroku.com/articles/mean-apps-restful-api
 http://borjarefoyo.com/2016/04/24/build-nodejs-stack-typescript-expressjs-mongodb-angularjs/
 https://devcenter.heroku.com/articles/mean-apps-restful-api
+
+npm run grunt
+npm start
