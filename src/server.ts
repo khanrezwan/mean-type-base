@@ -1,10 +1,23 @@
+
+
 import * as bodyParser from "body-parser"
 import * as express from "express"
 import * as logger from "morgan"
 import * as path from "path"
 import * as passport from "passport"
 
+
 import errorHandler = require("errorhandler");
+
+//routes
+import { IndexRoute } from "./routes/index"
+//interfaces
+import { IUser } from './interfaces/user';
+//models
+import { IUserModel } from './models/user';
+import { IModel } from './models/model';
+//schemas
+import { userSchema } from "./schemas/user"; //import userSchema
 
 export class Server {
     public app: express.Application;
@@ -52,10 +65,18 @@ export class Server {
   * Create router
   *
   * @class Server
-  * @method api
+  * @method routes
+  * @returns void
   */
     routes() {
+        let router: express.Router;
+        router = express.Router();
 
+        //IndexRoute
+        IndexRoute.create(router);
+
+        //use router middleware
+        this.app.use(router);
     }
 
     /**
