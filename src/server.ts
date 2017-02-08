@@ -5,7 +5,7 @@ import * as express from "express"
 import * as logger from "morgan"
 import * as path from "path"
 import * as passport from "passport"
-
+import methodOverride = require("method-override");
 
 import errorHandler = require("errorhandler");
 
@@ -51,6 +51,10 @@ export class Server {
         this.app.use(bodyParser.urlencoded({
             extended: true
         }));
+
+         //use override middlware
+  this.app.use(methodOverride());
+
         //catch 404 and forward to error handler
         this.app.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
             err.status = 404;

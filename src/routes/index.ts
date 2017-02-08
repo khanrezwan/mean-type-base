@@ -24,6 +24,11 @@ export class IndexRoute extends BaseRoute {
     router.get("/", (req: Request, res: Response, next: NextFunction) => {
       new IndexRoute().index(req, res, next);
     });
+    router.post("/:id",(req:Request,res:Response, next: NextFunction)=>
+    {
+      new IndexRoute().pos(req,res,next);
+      console.log(req.body);
+    });
   }
 
   /**
@@ -57,5 +62,9 @@ export class IndexRoute extends BaseRoute {
     // //render template
     // this.render(req, res, "index", options);
     res.json({message: "Welcome to the Tour of Heros"});
+  }
+  public pos(req: Request, res: Response, next: NextFunction)
+  {
+    res.json({message:"Mwahahah"});
   }
 }
