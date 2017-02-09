@@ -1,5 +1,4 @@
-
-
+import * as mongoose from 'mongoose';
 import * as bodyParser from "body-parser"
 import * as express from "express"
 import * as logger from "morgan"
@@ -21,16 +20,36 @@ import { userSchema } from "./schemas/user"; //import userSchema
 
 export class Server {
     public app: express.Application;
+    private model: IModel;
     public static bootstrap(): Server {
         return new Server();
     }
     constructor() {
+        //instance defaults
+        this.model = Object(); //initialize this to an empty object
+
         this.app = express();
         this.config();
+        this.configdb();
         this.routes();
         this.api();
     }
+    /**
+     * Configure Databse
+     * @class Server
+     * @method configDB
+     */
+    configdb() {
+        const MONGODB_CONNECTION: string = "mongodb://localhost:27017/testDB";
+        //use q promises
+        global.Promise = require("q").Promise;
+        (<any>mongoose).Promise = global.Promise;
+        //connect to mongoose
+        let connection: mongoose.Connection = mongoose.createConnection(MONGODB_CONNECTION);
+        //create models
+        this.model.user = connection.model<IUserModel>("User", userSchema);
 
+    }
     /**
    * Configure application
    *
@@ -38,6 +57,7 @@ export class Server {
    * @method config
    */
     config() {
+
         //add static paths
         this.app.use(express.static(path.join(__dirname, "public")));
 
@@ -52,8 +72,8 @@ export class Server {
             extended: true
         }));
 
-         //use override middlware
-  this.app.use(methodOverride());
+        //use override middlware
+        this.app.use(methodOverride());
 
         //catch 404 and forward to error handler
         this.app.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
