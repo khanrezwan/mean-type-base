@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { BaseRoute } from "./route";
+
 
 
 /**
@@ -7,7 +7,7 @@ import { BaseRoute } from "./route";
  *
  * @class User
  */
-export class IndexRoute extends BaseRoute {
+export class IndexRoute {
 
   /**
    * Create the routes.
@@ -21,7 +21,7 @@ export class IndexRoute extends BaseRoute {
     console.log("[IndexRoute::create] Creating index route.");
 
     //add home page route
-    router.get("/", (req: Request, res: Response, next: NextFunction) => {
+    router.get("/test", (req: Request, res: Response, next: NextFunction) => {
       new IndexRoute().index(req, res, next);
     });
     router.post("/:id",(req:Request,res:Response, next: NextFunction)=>
@@ -38,7 +38,7 @@ export class IndexRoute extends BaseRoute {
    * @constructor
    */
   constructor() {
-    super();
+    //super();
   }
 
   /**
@@ -51,16 +51,7 @@ export class IndexRoute extends BaseRoute {
    * @next {NextFunction} Execute the next method.
    */
   public index(req: Request, res: Response, next: NextFunction) {
-    //set custom title
-    // this.title = "Home | Tour of Heros";
-
-    // //set options
-    // let options: Object = {
-    //   "message": "Welcome to the Tour of Heros"
-    // };
-
-    // //render template
-    // this.render(req, res, "index", options);
+    
     res.json({message: "Welcome to the Tour of Heros"});
   }
   public pos(req: Request, res: Response, next: NextFunction)
