@@ -5,7 +5,7 @@ import { NextFunction, Request, Response, Router } from "express";
 /**
  * / route
  *
- * @class User
+ * @class IndexRoute
  */
 export class IndexRoute {
 
@@ -24,7 +24,7 @@ export class IndexRoute {
     router.get("/test", (req: Request, res: Response, next: NextFunction) => {
       new IndexRoute().index(req, res, next);
     });
-    router.post("/:id",(req:Request,res:Response, next: NextFunction)=>
+    router.post("/",(req:Request,res:Response, next: NextFunction)=>
     {
       new IndexRoute().pos(req,res,next);
       console.log(req.body);

@@ -1,3 +1,4 @@
+import { UserApi } from './routes/user';
 import * as mongoose from 'mongoose';
 import * as bodyParser from "body-parser"
 import * as express from "express"
@@ -20,7 +21,8 @@ import { userSchema } from "./schemas/user"; //import userSchema
 
 export class Server {
     public app: express.Application;
-    private model: IModel;
+    public model: IModel;
+    
     public static bootstrap(): Server {
         return new Server();
     }
@@ -98,6 +100,9 @@ export class Server {
 
         //IndexRoute
         IndexRoute.create(router);
+
+        //UserRoute
+        UserApi.create(router, this.model.user);
 
         //use router middleware
         this.app.use(router);
